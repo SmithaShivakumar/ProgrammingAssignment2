@@ -8,10 +8,10 @@ makeCacheMatrix <- function (mtrx=matrix()) {
         mtrx <<- x ;
         inverse <<- NULL ;
     }
-    get <- function()return(mtrx);
+    getting <- function()return(mtrx);
     setinverse <- function(inv) inverse <<- inv;
     getinverse <- function()return(inverse);
-    return(list(setting = setting, get = get, setinverse = setinverse, getinverse = getinverse))
+    return(list(setting = setting, getting = getting, setinverse = setinverse, getinverse = getinverse))
 }
   
 ##Function that computes the inverse of the special matrix 
@@ -22,7 +22,7 @@ cacheSolve <- function(mtrx,...) {
         message("Getting cached data...")
         return(inverse)
     }
-    data <- mtrx$get()
+    data <- mtrx$getting()
     inverse <- solve(data,...)
     mtrx$setinverse(inverse)
     return(inverse)
